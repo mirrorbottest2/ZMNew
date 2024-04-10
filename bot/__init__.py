@@ -273,12 +273,9 @@ RSS_CHAT_ID = '' if len(RSS_CHAT_ID) == 0 else int(RSS_CHAT_ID)
 RSS_DELAY = environ.get('RSS_DELAY', '')
 RSS_DELAY = 900 if len(RSS_DELAY) == 0 else int(RSS_DELAY)
 
-try:
-    RSS_COMMAND = getConfig('RSS_COMMAND')
-    if len(RSS_COMMAND) == 0:
-        raise KeyError
-except:
-    RSS_COMMAND = None
+RSS_COMMAND = environ.get('RSS_COMMAND', '')
+RSS_COMMAND = '' if len(RSS_COMMAND) == 0 else str(RSS_COMMAND)
+
 
 TORRENT_TIMEOUT = environ.get('TORRENT_TIMEOUT', '')
 TORRENT_TIMEOUT = '' if len(TORRENT_TIMEOUT) == 0 else int(TORRENT_TIMEOUT)
@@ -505,7 +502,8 @@ config_dict = {
     "REQUEST_LIMITS": REQUEST_LIMITS,
     "DM_MODE": DM_MODE,
     "DELETE_LINKS": DELETE_LINKS,
-    "TOKEN_TIMEOUT": TOKEN_TIMEOUT
+    "TOKEN_TIMEOUT": TOKEN_TIMEOUT,
+    "RSS_COMMAND" : RSS_COMMAND
 }
 
 config_dict = OrderedDict(sorted(config_dict.items()))
