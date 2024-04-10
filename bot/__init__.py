@@ -273,6 +273,13 @@ RSS_CHAT_ID = '' if len(RSS_CHAT_ID) == 0 else int(RSS_CHAT_ID)
 RSS_DELAY = environ.get('RSS_DELAY', '')
 RSS_DELAY = 900 if len(RSS_DELAY) == 0 else int(RSS_DELAY)
 
+try:
+    RSS_COMMAND = getConfig('RSS_COMMAND')
+    if len(RSS_COMMAND) == 0:
+        raise KeyError
+except:
+    RSS_COMMAND = None
+
 TORRENT_TIMEOUT = environ.get('TORRENT_TIMEOUT', '')
 TORRENT_TIMEOUT = '' if len(TORRENT_TIMEOUT) == 0 else int(TORRENT_TIMEOUT)
 
